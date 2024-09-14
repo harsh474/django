@@ -1,0 +1,26 @@
+{% comment %} {% extends "blog/base.html" %}
+
+{% block title %} Home -My Page{% endblock  %}
+{% block content %} <h2>Welcome to the Blog Home Page</h2>{% endblock  %} {% endcomment %}
+
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>All Blog</title>
+</head>
+<body>
+       {% for post in posts %}
+       <h1>All blogs are here {{ post.name }} </h1> 
+        <a href="{% url 'blog_discription' post.id  %}">Acess me</a>
+       <h1>All blogs are here {{ post.date_added }} </h1>
+       <h1>All blogs are here {{ post.type }} </h1>
+          <img src="{{post.image.url}}" alt="">
+       {% endfor %}  
+</body>
+</html> 
+
+
