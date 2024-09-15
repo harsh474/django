@@ -1,20 +1,17 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
-# Create your models here.
-class Chai(models.Model): 
-     CHAI_TYPE_CHOICE = [
-          ('ML','MASALA'),
-          ('PL','PLAIN'),
-          ('GI','GINGER'),
-          ('EL','ELIACHI'),
-     ]
-     name = models.CharField(max_length=50) 
-     image = models.ImageField(upload_to='chais/')
-     date_added = models.DateTimeField(default=timezone.now())
-     type = models.CharField(max_length = 2,choices = CHAI_TYPE_CHOICE)
-     discription = models.TextField(default='this feild is empty')
-     price = models.IntegerField(default='9')
-     total_price = models.IntegerField(default='9')
-     def __str__(self):
-         return self.name
+
+
+class Product(models.Model): 
+      name = models.CharField(max_length=30)
+      email = models.CharField(max_length=30)
+
+
+class Profile(models.Model):
+     bio = models.TextField(max_length=400)
+     birth_date = models.DateField(null = True , blank=True) 
+     product = models.OneToOneField(Product,related_name ="Product", on_delete=models.CASCADE,default=1)
+
+

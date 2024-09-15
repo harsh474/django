@@ -1,12 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Chai
+# from .models import Chai
 # Create your views here.
 def blog(request): 
      return HttpResponse("this is a blog app")
 
 def sportblog(request): 
      return HttpResponse("this is a sportblog app")
+
+
 def all_blog(request):
      blog ={ 
         'title':"t1", 
@@ -20,14 +22,14 @@ def all_blog(request):
         {'title': 'First Post', 'author': 'Author 1'},
         {'title': 'Second Post', 'author': 'Author 2'},
     ]
-     chais = Chai.objects.all()
-     context = {'posts': chais}
+     # chais = Chai.objects.all()
+     context = {'posts': posts}
      
      return render(request,"blog/all_blog.html",context)
 
 
 def blog_discription(request, id): 
-    chai = Chai.objects.get(id=id)  # Pass id as a keyword argument
-    chai.delete()
+#     chai = Chai.objects.get(id=id)  # Pass id as a keyword argument
+#     chai.delete()
     return HttpResponse("chai with id is deleted")
 #   return render(request, "blog/blog_discription.html", {"chai": chai})
