@@ -26,5 +26,5 @@ urlpatterns = [
                 path('bus/', views.bus ,name ="car"),
                 path('car/', views.car ,name ='bus'),
                 path('blog/',include('blog.urls')),
-                path('chaiheadq/',include('chaiheadq.urls'))
+                path('tweet/',include('tweet.urls'))
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
