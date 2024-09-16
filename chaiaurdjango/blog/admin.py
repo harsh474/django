@@ -1,20 +1,19 @@
 from django.contrib import admin
-from .models import Profile,Product
-from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from .models import Product, Profile, Review, Category
 
-# Register your models here.
-# admin.site.register(Chai)
+# Inline to display Reviews within Product
+class ReviewInline(admin.TabularInline):
+    model = Review
+    extra = 1
 
-class ProfileInline(admin.StackedInline) : 
-     model = Profile
-     can_delete = False 
-     verbose_name_plural = 'Profiles'   
+# Product Admin Configuration
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [ReviewInline]  # Inline for Reviews
+    list_display = ('name', 'description', 'profile')  # Display name, description, and profile
+    filter_horizontal = ('categories',)  # Use filter widget for categories
 
-class ProfileAdmin(admin.ModelAdmin): 
-     inlines = [ProfileInline]
-
-
-
-admin.site.register(Product,ProfileAdmin)
+# Register models
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Profile)
+admin.site.register(Review)
+admin.site.register(Category)
