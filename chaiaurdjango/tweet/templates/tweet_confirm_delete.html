@@ -4,7 +4,13 @@
 
 {% block content %}
    <div>
-   <h2>this is delte post </h2>
+   <h2>Are you Sure !You want to Delete </h2>
+   <form method="POST"> 
+     {% csrf_token %}
+     <button type="delete" class="btn btn-danger">delete</button>
+     <a class="btn btn-primary" href="{%url 'tweet_list' %}" role="button">Cancel</a>
+   </form>
+  
    </div>
 {% endblock %}
 

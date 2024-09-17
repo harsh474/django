@@ -1,12 +1,23 @@
 {% extends "website/index.html" %}
 
-{% block title %}Chai aur tweet{% endblock %}
+{% block title %}Chai aur Tweet{% endblock %}
 
 {% block content %}
 
+<h1>Welcome to Chai Danjo project</h1>
+<div>
+    {% if form.instance.pk %} 
+        <h3>Edit Tweet</h3>
+    {% else %} 
+        <h3>Create Tweet</h3>
+    {% endif %}
 
-     <div>
-   
-     </div>
+    <form method="POST" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning">Submit</button>
+    </form>
+    <a href="{% url 'tweet_list' %}">Back to tweet list</a>
+</div>
+
 {% endblock %}
-
