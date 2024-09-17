@@ -1,0 +1,15 @@
+{% extends "website/index.html" %}
+
+{% block title %}my form{% endblock %}
+
+{% block content %}
+    <form action="my_form_view" method="POST">
+     {% csrf_token %}
+     {{ form.as_p }}
+     <input type="submit" value = "Submit">
+    </form>
+{% endblock %}
+
+
+
+
