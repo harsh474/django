@@ -6,7 +6,13 @@ class TweetForm(forms.ModelForm):
           model = Tweet
           fields = ["text","photo"]
 
-class Myform(forms.Form):
-     name = forms.CharField( max_length=230, required=False)
-     email = forms.EmailField( required=False)
 
+# through this we cant save our data into database
+# class Myform(forms.Form):
+#      name = forms.CharField( max_length=230, required=False)
+#      email = forms.EmailField( required=False)
+
+class Myform(forms.ModelForm):
+      class Meta:
+          model = Tweet
+          fields = ["text","photo"]

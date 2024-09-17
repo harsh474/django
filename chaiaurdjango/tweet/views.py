@@ -46,19 +46,4 @@ def tweet_delete(request,tweet_id):
           return redirect('tweet_list')
      else:  
           return render(request,'tweet_confirm_delete.html',{'tweet':tweet})
-     
 
-def my_form_view(request): 
- 
-
-     if request.method == "POST":
-          form = Myform(request.POST)
-          if form.is_valid():
-               name = form.cleaned_data.get('name')
-               email = form.cleaned_data.get('email')
-               # Example action: return an HTTP response
-               return HttpResponse(f"Form submitted successfully! Name: {name}, Email: {email}")
-          
-     else:  
-         form = Myform()
-         return render(request,'my_form.html',{"form":form})
