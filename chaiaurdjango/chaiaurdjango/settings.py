@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# settings.py
+
+LOGIN_REDIRECT_URL = '/tweet/'  # Redirect to this URL after successful login
+LOGOUT_REDIRECT_URL = '/tweet/'  # Redirect to this URL after logout
+# settings.py
+
+LOGIN_URL = '/tweet/login/'  # Change this to the actual URL of your login page
 
 # Application definition
 

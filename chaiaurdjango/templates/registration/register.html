@@ -1,0 +1,16 @@
+
+{% extends "website/index.html" %}
+
+{% block title %}Chai aur tweet{% endblock %}
+
+{% block content %}
+   <div class="container mt-4">
+     <h1 class="ml-3">Welcome to Chai Danjo project</h1>
+     <h2>Register</h2>
+     <form method="post">
+         {% csrf_token %}
+         {{ form.as_p }}
+         <button type="submit">Register</button>
+     </form>
+   </div>
+{% endblock %}
