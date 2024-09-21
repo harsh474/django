@@ -7,13 +7,29 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 # Create your views here.
 
+
+
+
+from rest_framework import viewsets
+from .models import BlogPost
+from .serializers import BlogPostSerializer
+
+class BlogPostViewSet(viewsets.ModelViewSet):
+    queryset = BlogPost.objects.all()
+    serializer_class = BlogPostSerializer
+
+
+
+
+
+    
 def tweet(request): 
      # return HttpResponse("hi this is a tweet app")
      return render(request,'index.html')
 
 def tweet_list(request): 
     tweets =  Tweet.objects.order_by('-created_at')
-    return render(request,'tweet_list.html',{"tweets":tweets})
+    return render(request,'tweet_list.html',{"tweets":tweets,'user':request.user})
 
 
 @login_required

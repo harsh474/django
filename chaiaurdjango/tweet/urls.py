@@ -4,6 +4,11 @@ from  . import views
 from django.conf import settings 
 from django.contrib.auth import views as auth_views
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter
+from .views import BlogPostViewSet
+
+router = DefaultRouter()
+router.register(r'posts', BlogPostViewSet)
 urlpatterns = [ 
                 
                 path('',views.tweet_list,name="tweet_list"),
@@ -15,5 +20,5 @@ urlpatterns = [
                 path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
                 path('logout/', auth_views.LogoutView.as_view(template_name='registration/logged_out.html'), name='logout'),
                 path('register/', views.register, name='register'),  # Custom view for user registration 
-  
+                path('api/', include(router.urls)),
 ]+static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
